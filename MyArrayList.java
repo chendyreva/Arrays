@@ -16,7 +16,7 @@ class MyArrayList<Item extends Comparable<Item>> {
     }
 
     public void delete(int value){
-        int i=0;
+        int i = 0;
         for(i=0;i<this.size;i++){
             if (this.arr[i] == value) break;
         }
@@ -31,6 +31,19 @@ class MyArrayList<Item extends Comparable<Item>> {
         this.arr[this.size] = value;
         this.size++;
     }
+
+    public boolean find(int value){
+        int i;
+        for(i=0;i<this.size;i++){
+            if (this.arr[i] == value) break;
+        }
+        if (i==this.size)
+            return false;
+        else
+            return true;
+    }
+
+
 }
 
  class Main {
@@ -40,19 +53,30 @@ class MyArrayList<Item extends Comparable<Item>> {
         arr.insert(5);
         arr.insert(1);
         arr.insert(2);
-        arr.insert(5);
-        arr.insert(4);
-        arr.insert(5);
         arr.insert(6);
         arr.insert(5);
         arr.insert(8);
         arr.insert(9);
+        arr.insert(5);
+        arr.insert(4);
+        arr.insert(5);
+
+        int search = 8;
 
         System.out.println("Выводим массив");
         arr.display();
-        arr.delete(1);
-        System.out.println("Выводим новый массив");
-        arr.display();
+
+        if (arr.find(search)){
+            arr.delete(search);
+            System.err.println("Элемент " +search+ " удален");
+
+            System.out.println("Выводим новый массив");
+            arr.display();
+
+        } else {
+            System.out.println("Не удалось найти элемент "+search);
+        }
+
     }
 }
 
